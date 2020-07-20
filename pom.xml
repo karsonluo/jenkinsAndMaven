@@ -1,0 +1,275 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>karsondemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>karsondemo</name>
+	<description>Demo project for Spring Boot</description>
+
+ 
+	<properties>	
+	<!-- 通过properties元素用户可以自定义一个或多个Maven属性，然后在POM的其他地方使用**${属性名}**的方式引用该属性。
+	这种做法的最大意义在于消除重复和统一管理。 -->	
+		<jmeter.result.jtl.dir>${project.build.directory}\jmeter\results</jmeter.result.jtl.dir>
+		<jmeter.result.html.dir>${project.build.directory}\jmeter\html</jmeter.result.html.dir>
+		<jmeter.result.html.dir2>${project.build.directory}\jmeter\htm2</jmeter.result.html.dir2>
+		
+		<ReportName>KarsonTestReport</ReportName>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			 <scope>test</scope> 
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		    <version>2.2.6.RELEASE</version>
+		</dependency>
+
+		<!-- oracle -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+		   <!-- mysql驱动包 -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.16</version>
+    </dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.54</version>
+		</dependency>
+		<!--部署热启动依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+         <!--jmeter核心包-->
+       <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_core</artifactId>
+            <version>5.0</version>
+        </dependency>
+  <!--jmeter组件包-->
+		<!-- https://mvnrepository.com/artifact/org.apache.jmeter/ApacheJMeter_components -->
+		<dependency>
+		    <groupId>org.apache.jmeter</groupId>
+		    <artifactId>ApacheJMeter_components</artifactId>
+		    <version>5.0</version>
+		</dependency>
+  <!--jmeter Http包-->
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_http</artifactId>
+            <version>5.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.10</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+	       <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-core</artifactId>
+	    <version>3.0.0</version>
+	    <scope>test</scope>
+	</dependency>
+       
+    <dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>4.0.0</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>4.0.0</version>
+	</dependency>
+     
+     <dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-launcher</artifactId>
+    <version>1.0.0-RC2</version>
+    <scope>test</scope>
+</dependency>
+<!-- 
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.0.0-RC2</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.junit.vintage</groupId>
+    <artifactId>junit-vintage-engine</artifactId>
+    <version>4.12.0-RC2</version>
+    <scope>test</scope>
+</dependency>
+ -->     
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.8.0</version>
+</dependency>
+        
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<addResources>true</addResources>
+				</configuration>
+			</plugin>
+			
+	           <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.9.0</version>
+                 <executions>
+					<execution>
+						<id>jmeter-tests</id>
+						<goals>
+							<goal>jmeter</goal>
+						</goals>
+						<configuration> <!-- 指定生成的格式，jmeter-maven-plugin插执行jmeter后默认生成的是csv格式文件 -->
+							<resultsFileFormat>jtl</resultsFileFormat> 
+						</configuration>
+					</execution>
+					<!-- 设置ignoreResultFailures，必须把 jmeter-check-results加上-->
+					<execution>
+						<id>jmeter-check-results</id>
+						<goals>
+							<goal>results</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- 指定jmeter版本 -->
+					<jmeterVersion>5.0</jmeterVersion>
+					<!-- 设置jmeter生成结果文件格式 -->
+					<resultsFileFormat>xml</resultsFileFormat>
+					<!-- 设置忽略失败是否停止运行 -->
+					<ignoreResultFailures>true</ignoreResultFailures>
+					<!--设置结果是否有时间戳 -->
+					<testResultsTimestamp>true</testResultsTimestamp>
+					<testFilesIncluded>
+						<!-- //指定运行的jmeter脚本 -->
+						<jMeterTestFile>test-get.jmx</jMeterTestFile>
+					</testFilesIncluded>
+					<!-- 指定jtl生成目录 -->
+					<resultsDirectory>${jmeter.result.jtl.dir}</resultsDirectory>
+				</configuration>		
+            </plugin>
+
+			<plugin>			
+			<!--根据xsl模版把jtl文件转换成html -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0.2</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformationSets>
+					   <!-- 可以根据不同的模版，同事生成多个报告-->
+                        <transformationSet>
+                            <dir>${jmeter.result.jtl.dir}</dir>
+                           <!--这里可执行自定义模板  <stylesheet>src\test\resources\jmeter.results.karsontest.xsl</stylesheet> -->
+                             <stylesheet>src\test\resources\jmeter-results-detail-report_21.xsl</stylesheet>
+                            <outputDir>${jmeter.result.html.dir2}</outputDir>
+                            <fileMappers>
+                                <fileMapper
+                                    implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                    <targetExtension>html</targetExtension>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+							
+						<transformationSet>
+							<dir>${jmeter.result.jtl.dir}</dir>
+							<stylesheet>src\test\resources\jmeter-results-report_21.xsl</stylesheet>
+							<outputDir>${jmeter.result.html.dir}</outputDir>
+							<!-- 把jtl格式转传承html -->
+							<fileMappers>
+								<fileMapper
+									implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+									<targetExtension>html</targetExtension>
+								</fileMapper>
+							</fileMappers>
+						</transformationSet>
+						<transformationSet>
+							<dir>${jmeter.result.jtl.dir}</dir>
+							<stylesheet>src\test\resources\jmeter-results-detail-report_21.xsl</stylesheet>
+							<outputDir>${jmeter.result.html.dir1}</outputDir>
+							<!-- 把jtl格式转传承html -->
+							<fileMappers>
+								<fileMapper
+									implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+									<targetExtension>html</targetExtension>
+								</fileMapper>
+							</fileMappers>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
+				<!-- using XSLT 2.0 -->
+				<dependencies>
+					<dependency>
+						<groupId>net.sf.saxon</groupId>
+						<artifactId>saxon</artifactId>
+						<version>8.7</version>
+					</dependency>
+				</dependencies>					
+     		</plugin>
+			
+		</plugins>
+		
+		<defaultGoal>clean</defaultGoal>
+	</build>
+
+
+</project>
