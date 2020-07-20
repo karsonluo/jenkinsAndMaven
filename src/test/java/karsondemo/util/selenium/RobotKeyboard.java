@@ -172,6 +172,7 @@ public class RobotKeyboard {
     	}
     	robot.keyPress(keyCodes);
     	robot.keyRelease(keyCodes);
+    	System.out.println("===");
  }
     private void doType(int keyShit,int keyCodes) {
     	if(keyCodes==0) 
