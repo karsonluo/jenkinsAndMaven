@@ -182,6 +182,7 @@ public class RobotKeyboard {
     	robot.keyPress(keyCodes);
     	robot.keyRelease(keyCodes);
     	robot.keyRelease(keyShit);
+    	
     	}
     private void doTypeKey(int keyCodes,int times) {
     	if(keyCodes==0) 
